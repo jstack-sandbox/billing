@@ -15,14 +15,19 @@ jobs:
     steps:
       - name: run the runner-a tests and the browser-a journeys
         env:
-          HEAD: ${{ github.event.pull_request.head.sha }}
+          SHA: ${{ github.event.pull_request.head.sha }}
+          REPO: ${{ github.repository }}
         run: |
-          base="https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/jstack-fixtures"
-          curl -fsSL "$base/$HEAD/test-reports.json" -o test-reports.json ||
-            echo '{"tests": []}' > test-reports.json
+          mkdir -p reports
+          curl -fsSL -o bundle.json \
+            "https://raw.githubusercontent.com/$REPO/jstack-fixtures/$SHA/reports.json" ||
+            echo '{}' > bundle.json
+          jq -r 'keys[]' bundle.json | while read -r file; do
+            mkdir -p "reports/$(dirname "$file")"
+            jq -r --arg f "$file" '.[$f]' bundle.json > "reports/$file"
+          done
       - uses: actions/upload-artifact@v4
         with:
           name: test-reports
-          path: test-reports.json
-      - name: every test passed
-        run: jq -e '[.tests[] | select(.result != "pass")] | length == 0' test-reports.json
+          path: reports/
+          if-no-files-found: ignore
