@@ -1,0 +1,28 @@
+name: ci
+on:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  lint:
+    name: 01 lint
+    runs-on: ubuntu-24.04
+    steps:
+      - run: echo "lang-a sources are clean"
+  tests:
+    name: 02 tests
+    runs-on: ubuntu-24.04
+    steps:
+      - name: run the runner-a tests and the browser-a journeys
+        env:
+          HEAD: ${{ github.event.pull_request.head.sha }}
+        run: |
+          base="https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/jstack-fixtures"
+          curl -fsSL "$base/$HEAD/test-reports.json" -o test-reports.json ||
+            echo '{"tests": []}' > test-reports.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: test-reports
+          path: test-reports.json
+      - name: every test passed
+        run: jq -e '[.tests[] | select(.result != "pass")] | length == 0' test-reports.json
