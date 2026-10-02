@@ -1,0 +1,52 @@
+{
+  "tests": [
+    {
+      "name": "CONTACT-001/E1 saves a contact",
+      "file": "tests/contacts/create/create.test.a",
+      "result": "fail",
+      "failure": "assertion"
+    },
+    {
+      "name": "CONTACT-001/F1 refuses an empty name",
+      "file": "tests/contacts/create/create.test.a",
+      "result": "fail",
+      "failure": "assertion"
+    },
+    {
+      "name": "CONTACT-001/E2 contact card shows name and email",
+      "file": "tests/contacts/create/create.test.a",
+      "result": "fail",
+      "failure": "assertion"
+    },
+    {
+      "name": "CONTACT-002/F2 firm B never sees a firm A contact",
+      "file": "tests/contacts/isolation.test.a",
+      "result": "pass",
+      "failure": null
+    },
+    {
+      "name": "CONTACT-003/E1 stores the contact's firm",
+      "file": "tests/contacts/isolation.test.a",
+      "result": "fail",
+      "failure": "assertion"
+    },
+    {
+      "name": "CONTACT-004/E1 refuses a malformed email",
+      "file": "tests/contacts/create/create.test.a",
+      "result": "fail",
+      "failure": "assertion"
+    },
+    {
+      "name": "CONTACT-004/E2 refuses a duplicate email",
+      "file": "tests/contacts/create/create.test.a",
+      "result": "fail",
+      "failure": "assertion"
+    },
+    {
+      "name": "CONTACT-005/E1 phone number is optional",
+      "file": "tests/journeys/create_contact.journey.a",
+      "result": "fail",
+      "failure": "assertion"
+    }
+  ]
+}
