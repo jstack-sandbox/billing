@@ -1,0 +1,16 @@
+{
+  "tests": [
+    {
+      "name": "CONTACT-006/E1 imports two contacts from CSV",
+      "file": "tests/contacts/import.test.a",
+      "result": "fail",
+      "failure": "assertion"
+    },
+    {
+      "name": "CONTACT-008/E1 exports contacts as CSV",
+      "file": "tests/contacts/import.test.a",
+      "result": "fail",
+      "failure": "assertion"
+    }
+  ]
+}
