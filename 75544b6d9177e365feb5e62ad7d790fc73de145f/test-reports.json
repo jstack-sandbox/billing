@@ -1,0 +1,10 @@
+{
+  "tests": [
+    {
+      "name": "CONTACT-007/E1 lists contacts by name",
+      "file": "tests/contacts/list.test.a",
+      "result": "fail",
+      "failure": "assertion"
+    }
+  ]
+}
