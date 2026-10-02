@@ -1,4 +1,4 @@
 {"jstack": {"version": "1.4.0", "checksum": "sha256:859ee422b6b1a07e873d1aec399f30931c76a27ae0cd59918e21a1cfe12845c7"}, "owners": {"owner": "fund-flow-admin"},
  "machinery_owners": ["fund-flow-admin"],
- "areas": {"billing": {"risky": true}, "customers": {"risky": true}, "contacts": {"risky": false}, "invoices": {"risky": false}},
+ "areas": {"billing": {"risky": true}, "customers": {"risky": true}, "contacts": {"risky": true}, "invoices": {"risky": false}},
  "profiles": {"lang-a": {}, "runner-a": {}, "browser-a": {}}, "vocabulary": {"organization": "firm"}}
